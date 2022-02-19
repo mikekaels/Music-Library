@@ -37,6 +37,11 @@
 		BDBE35C327C13A30008252A0 /* Configures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35C227C13A2F008252A0 /* Configures.swift */; };
 		BDBE35C527C13B2C008252A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35C427C13B2C008252A0 /* Colors.swift */; };
 		BDBE35C727C13DB8008252A0 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35C627C13DB8008252A0 /* Identifiers.swift */; };
+		BDBE35CB27C140B4008252A0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35CA27C140B4008252A0 /* Router.swift */; };
+		BDBE35CD27C140E8008252A0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35CC27C140E8008252A0 /* Service.swift */; };
+		BDBE35CF27C140F4008252A0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35CE27C140F4008252A0 /* APIManager.swift */; };
+		BDBE35D127C14132008252A0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35D027C14132008252A0 /* Reachability.swift */; };
+		BDBE35D327C149AA008252A0 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35D227C149AA008252A0 /* MusicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +79,11 @@
 		BDBE35C227C13A2F008252A0 /* Configures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configures.swift; sourceTree = "<group>"; };
 		BDBE35C427C13B2C008252A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BDBE35C627C13DB8008252A0 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
+		BDBE35CA27C140B4008252A0 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		BDBE35CC27C140E8008252A0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		BDBE35CE27C140F4008252A0 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		BDBE35D027C14132008252A0 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BDBE35D227C149AA008252A0 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +119,7 @@
 		BDBE356727C103D4008252A0 /* MusicLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				BDBE35C827C14091008252A0 /* Core */,
 				BDBE35C027C139C4008252A0 /* Extensions */,
 				BDBE35C127C139CD008252A0 /* Utils */,
 				BDBE35A427C11226008252A0 /* Commons */,
@@ -193,6 +204,7 @@
 		BDBE35B927C11FC6008252A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BDBE35D227C149AA008252A0 /* MusicModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +241,25 @@
 				BDBE35C627C13DB8008252A0 /* Identifiers.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BDBE35C827C14091008252A0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BDBE35C927C1409D008252A0 /* Reachability */,
+				BDBE35CA27C140B4008252A0 /* Router.swift */,
+				BDBE35CC27C140E8008252A0 /* Service.swift */,
+				BDBE35CE27C140F4008252A0 /* APIManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BDBE35C927C1409D008252A0 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				BDBE35D027C14132008252A0 /* Reachability.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		EFF2E2921DCEDEC73790DB7E /* Pods */ = {
@@ -364,16 +395,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDBE358727C10F57008252A0 /* TabBarInteractor.swift in Sources */,
+				BDBE35CD27C140E8008252A0 /* Service.swift in Sources */,
 				BDBE358427C10F56008252A0 /* TabBarPresenter.swift in Sources */,
 				BDBE356D27C103D4008252A0 /* ViewController.swift in Sources */,
 				BDBE359327C11053008252A0 /* LibraryModels.swift in Sources */,
+				BDBE35CF27C140F4008252A0 /* APIManager.swift in Sources */,
+				BDBE35CB27C140B4008252A0 /* Router.swift in Sources */,
 				BDBE356927C103D4008252A0 /* AppDelegate.swift in Sources */,
+				BDBE35D127C14132008252A0 /* Reachability.swift in Sources */,
 				BDBE358927C10F57008252A0 /* TabBarVC.swift in Sources */,
 				BDBE35C527C13B2C008252A0 /* Colors.swift in Sources */,
 				BDBE359227C11053008252A0 /* LibraryRouter.swift in Sources */,
 				BDBE359427C11053008252A0 /* LibraryInteractor.swift in Sources */,
 				BDBE356B27C103D4008252A0 /* SceneDelegate.swift in Sources */,
 				BDBE35A127C110C6008252A0 /* FavoriteInteractor.swift in Sources */,
+				BDBE35D327C149AA008252A0 /* MusicModel.swift in Sources */,
 				BDBE359F27C110C6008252A0 /* FavoriteRouter.swift in Sources */,
 				BDBE358827C10F57008252A0 /* TabBarProtocol.swift in Sources */,
 				BDBE35B827C11F36008252A0 /* SongTableViewCell.swift in Sources */,
