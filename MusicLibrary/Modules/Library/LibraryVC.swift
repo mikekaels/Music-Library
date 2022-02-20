@@ -71,7 +71,11 @@ class LibraryVC: UIViewController{
     }
     
     @objc func updateTableData() {
-        presentor?.fetchChart(page: page, pageSize: pageSize)
+        if searchText != "" {
+            presentor?.findSongs(page: page, pageSize: pageSize, songTitle: searchText)
+        } else {
+            presentor?.fetchChart(page: page, pageSize: pageSize)
+        }
     }
 }
 
@@ -123,6 +127,7 @@ extension LibraryVC: UISearchResultsUpdating, UISearchControllerDelegate, UISear
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.page = 1
         if let searchText = searchBar.text {
             self.searchText = searchText
             presentor?.findSongs(page: page, pageSize: pageSize, songTitle: searchText)
