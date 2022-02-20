@@ -17,8 +17,8 @@ class LibraryVC: UIViewController{
     
     let refreshControl = UIRefreshControl()
         .configure { v in
-            v.attributedTitle = NSAttributedString(string: "Pull to refresh")
             v.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+            v.tintColor = Colors.title
         }
     private lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
@@ -27,7 +27,7 @@ class LibraryVC: UIViewController{
         sc.obscuresBackgroundDuringPresentation = false
         sc.searchBar.placeholder = "Find Song..."
         sc.searchBar.delegate = self
-        sc.searchBar.searchTextField.textColor = UIColor.white
+        sc.searchBar.barStyle = .black
         return sc
     }()
     

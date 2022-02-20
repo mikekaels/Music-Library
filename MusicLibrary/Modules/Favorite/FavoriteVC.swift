@@ -14,6 +14,7 @@ class FavoriteVC: UIViewController {
     lazy var table = MusicListTableViewController(items: [], configure: { (cell: SongTableViewCell, item: FavoriteSongs) in
         cell.lblSongTitle.text = item.songTitle
         cell.lblSinger.text = item.singer
+        cell.page = 1
         cell.state = item.saved == 1 ? .saved : .add
         cell.id = item.id
         cell.delegate = self

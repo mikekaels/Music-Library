@@ -31,7 +31,7 @@ class TabBarVC: UITabBarController {
             tabBarAppearance.configureWithDefaultBackground()
             tabBarAppearance.backgroundColor = Colors.background
             UITabBar.appearance().standardAppearance = tabBarAppearance
-            
+            UITabBar.appearance().tintColor = Colors.accent
 
             if #available(iOS 15.0, *) {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
@@ -51,6 +51,9 @@ class TabBarVC: UITabBarController {
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = Colors.background
+        
+        appearance.titleTextAttributes = [.foregroundColor: Colors.title]
+        appearance.largeTitleTextAttributes = [.foregroundColor: Colors.title]
         
         navController.navigationBar.setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.defaultPrompt)
         navController.navigationBar.shadowImage = UIImage()
