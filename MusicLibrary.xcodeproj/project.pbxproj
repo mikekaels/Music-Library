@@ -46,6 +46,7 @@
 		BDBE35FC27C179AB008252A0 /* FavoriteSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FB27C179AB008252A0 /* FavoriteSongs.swift */; };
 		BDBE35FE27C2B8AE008252A0 /* Extension + UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */; };
 		BDBE360027C2BD70008252A0 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */; };
+		BDBE360227C2CA0F008252A0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE360127C2CA0F008252A0 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		BDBE35FB27C179AB008252A0 /* FavoriteSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongs.swift; sourceTree = "<group>"; };
 		BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITableView.swift"; sourceTree = "<group>"; };
 		BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
+		BDBE360127C2CA0F008252A0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			children = (
 				BDBE35D227C149AA008252A0 /* MusicModel.swift */,
 				BDBE35FB27C179AB008252A0 /* FavoriteSongs.swift */,
+				BDBE360127C2CA0F008252A0 /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDBE358727C10F57008252A0 /* TabBarInteractor.swift in Sources */,
+				BDBE360227C2CA0F008252A0 /* Image.swift in Sources */,
 				BDBE35FE27C2B8AE008252A0 /* Extension + UITableView.swift in Sources */,
 				BDBE35CD27C140E8008252A0 /* Service.swift in Sources */,
 				BDBE358427C10F56008252A0 /* TabBarPresenter.swift in Sources */,
@@ -590,6 +594,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicLibrary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -618,6 +623,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicLibrary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

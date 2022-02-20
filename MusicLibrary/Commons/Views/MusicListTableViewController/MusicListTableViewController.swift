@@ -40,6 +40,7 @@ class MusicListTableViewController<T, Cell: UITableViewCell>: UITableViewControl
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.SongTableViewCell, for: indexPath) as! SongTableViewCell
         let item = items[indexPath.row]
+        cell.index = indexPath.row + 1
         configure(cell, item)
         return cell
     }

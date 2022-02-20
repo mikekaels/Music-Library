@@ -26,7 +26,7 @@ class LibraryPresenter: LibraryViewToPresenterProtocol {
         var newSongs : [SongsModel] = [SongsModel]()
         
         trackList.forEach { item in
-            let favoriteSong = SongsModel(id: NSNumber(value: (item.track?.trackID)!), songTitle: (item.track?.trackName)!, singer: (item.track?.artistName)!, dateAdded: Date(), saved: 0)
+            let favoriteSong = SongsModel(id: NSNumber(value: (item.track?.trackID)!), songTitle: (item.track?.trackName)!, singer: (item.track?.artistName)!, dateAdded: Date(), saved: 0, image: "")
             
             newSongs.append(favoriteSong)
         }
@@ -40,6 +40,10 @@ class LibraryPresenter: LibraryViewToPresenterProtocol {
     
     func addToFavorite(id: NSNumber) {
         interactor?.addToFavorite(id: id)
+    }
+    
+    func fetchRandomImage() {
+        interactor?.fetchRandomImage()
     }
 }
 

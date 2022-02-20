@@ -20,6 +20,7 @@ protocol LibraryViewToPresenterProtocol: AnyObject {
     func deleteFromFavorite(id: NSNumber)
     func addToFavorite(id: NSNumber)
     func findSongs(page: Int, pageSize: Int, songTitle: String)
+    func fetchRandomImage()
 }
 
 protocol LibraryPresenterToRouterProtocol: AnyObject {
@@ -44,4 +45,5 @@ protocol LibraryPresenterToInteractorProtocol: AnyObject {
     func addToFavorite(songs: [SongsModel])
     func deleteFromFavorite(id: NSNumber)
     func addToFavorite(id: NSNumber)
+    func fetchRandomImage()
 }

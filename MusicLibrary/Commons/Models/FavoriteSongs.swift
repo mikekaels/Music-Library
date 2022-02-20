@@ -23,4 +23,5 @@ struct SongsModel {
     let singer: String
     let dateAdded: Date
     let saved: NSNumber
+    let image: String
 }

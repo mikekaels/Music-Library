@@ -11,35 +11,46 @@ import Alamofire
 enum APIRouter {
     case getChartSong(page: Int, pageSize: Int)
     case findSongs(page: Int, pageSize: Int, songTitle: String)
+    case getRandomImage
 }
 
 let apiKey: String = "4f7549e47cbd524ddda8f7ca760b4277"
+let unsplashAccesKey = "Ujuvr2oFjFCKfggCDeVtwyQXQP8Eeiw4kZG-FxiobGE"
 
 extension APIRouter: HttpRouter {
     
     var baseURL: String {
         switch self {
-        default :
-            return "https://api.musixmatch.com/ws/1.1";
+        case .getChartSong, .findSongs: return "https://api.musixmatch.com/ws/1.1";
+        case .getRandomImage: return "https://api.unsplash.com"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getChartSong, .findSongs: return .get
+        case .getChartSong, .findSongs, .getRandomImage: return .get
         }
     }
     
     var headers: HTTPHeaders {
-        return [
-            "Content-Type": "application/json; charset=UTF-8"
-        ]
+        switch self {
+        case .getRandomImage:
+            return [
+                "Authorization": "Client-ID \(unsplashAccesKey)"
+            ]
+        case .getChartSong, .findSongs:
+            return [
+                "Content-Type": "application/json; charset=UTF-8"
+            ]
+        }
+        
     }
     
     var path: String {
         switch self {
         case .getChartSong: return "chart.tracks.get"
         case .findSongs: return "track.search"
+        case .getRandomImage: return "photos/random"
         }
     }
     
@@ -64,6 +75,10 @@ extension APIRouter: HttpRouter {
                 "page":page,
                 "page_size":pageSize,
                 "q_track":songTitle
+            ]
+        case .getRandomImage:
+            return [
+                "count":"10"
             ]
         }
     }

@@ -25,7 +25,7 @@ class LibraryVC: UIViewController{
         sc.searchResultsUpdater = self
         sc.delegate = self
         sc.obscuresBackgroundDuringPresentation = false
-        sc.searchBar.placeholder = "Find Songs..."
+        sc.searchBar.placeholder = "Find Song..."
         sc.searchBar.delegate = self
         sc.searchBar.searchTextField.textColor = UIColor.white
         return sc
@@ -35,6 +35,7 @@ class LibraryVC: UIViewController{
         cell.lblSongTitle.text = item.songTitle
         cell.lblSinger.text = item.singer
         cell.id = item.id
+        cell.page = self.page
         cell.state = item.saved == 1 ? .saved : .add
         cell.data = item
         cell.delegate = self

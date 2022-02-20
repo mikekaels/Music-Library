@@ -25,30 +25,41 @@ class SongTableViewCell: UITableViewCell {
         didSet {
             if state == .add { btnAdd.tintColor = Colors.gray10 }
             else if state == .saved { btnAdd.tintColor = Colors.accent}
-//            if state == .add { btnAdd.setTitle("Add to fav", for: .normal) }
-//            else if state == .saved { btnAdd.setTitle("Remove", for: .normal) }
         }
     }
     var data: SongsModel?
     var id: NSNumber?
+    var index: Int = 0
+    var page: Int = 1 {
+        didSet {
+            self.lblNumber.text = "\(page == 1 ? "" : index == 10 ? String(page + 1) : String(page))" + "\(index == 10 && page > 1 ? (index * 0): index)"
+        }
+    }
+    
+    let lblNumber: UILabel = UILabel()
+        .configure { v in
+            v.font = UIFont.boldSystemFont(ofSize: 11)
+            v.textColor = Colors.title
+            v.text = "1"
+        }
     
     let svDescription: UIStackView = UIStackView()
         .configure { v in
             v.axis = .vertical
             v.distribution = .equalSpacing
             v.backgroundColor = .clear
-            v.spacing = 8
+            v.spacing = 5
         }
     
     let lblSongTitle: UILabel = UILabel()
         .configure { v in
-            v.font = UIFont.boldSystemFont(ofSize: 16)
+            v.font = UIFont.systemFont(ofSize: 14)
             v.textColor = Colors.title
         }
     
     let lblSinger: UILabel = UILabel()
         .configure { v in
-            v.font = UIFont.boldSystemFont(ofSize: 13)
+            v.font = UIFont.systemFont(ofSize: 12)
             v.textColor = Colors.subTitle
         }
     
@@ -91,7 +102,15 @@ class SongTableViewCell: UITableViewCell {
 extension SongTableViewCell {
     func setupUI() {
         self.contentView.backgroundColor = Colors.background
+        contentView.addSubview(lblNumber)
         contentView.addSubview(btnAdd)
+        
+        
+        lblNumber.snp.makeConstraints { make in
+            make.leading.equalTo(contentView).offset(15)
+            make.centerY.equalTo(contentView)
+        }
+        
         contentView.addSubview(svDescription.configure(completion: { v in
             [lblSongTitle, lblSinger].forEach { v.addArrangedSubview($0)}
         }))
@@ -102,7 +121,7 @@ extension SongTableViewCell {
         
         svDescription.snp.makeConstraints { make in
             make.centerY.equalTo(contentView)
-            make.leading.equalTo(contentView).offset(20)
+            make.leading.equalTo(lblNumber).offset(25)
             make.trailing.equalTo(btnAdd.snp_leadingMargin).offset(-30)
         }
         

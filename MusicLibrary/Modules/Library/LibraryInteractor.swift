@@ -41,4 +41,8 @@ extension LibraryInteractor {
         }
     }
     
+    func fetchRandomImage() {
+        APIManager()
+    }
+    
 }
