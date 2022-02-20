@@ -89,11 +89,29 @@ extension LibraryVC: LibraryPresenterToViewProtocol {
     }
 
     func didFailFavorite(error: CustomError) {
-        
+        self.refreshControl.endRefreshing()
+        if error == .noInternetConnection {
+            self.noInternetConnection(true) { [weak self] in
+                if self?.searchText != "" {
+                    self?.presentor?.findSongs(page: self!.page, pageSize: self!.pageSize, songTitle: self!.searchText)
+                } else {
+                    self?.presentor?.fetchChart(page: self!.page, pageSize: self!.pageSize)
+                }
+            }
+        }
     }
     
     func didFailFetchChart(error: CustomError) {
-        
+        self.refreshControl.endRefreshing()
+        if error == .noInternetConnection {
+            self.noInternetConnection(true) { [weak self] in
+                if self!.searchText != "" {
+                    self?.presentor?.findSongs(page: self!.page, pageSize: self!.pageSize, songTitle: self!.searchText)
+                } else {
+                    self?.presentor?.fetchChart(page: self!.page, pageSize: self!.pageSize)
+                }
+            }
+        }
     }
 }
 

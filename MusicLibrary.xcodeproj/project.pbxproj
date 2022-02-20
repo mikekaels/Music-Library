@@ -47,6 +47,8 @@
 		BDBE35FE27C2B8AE008252A0 /* Extension + UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */; };
 		BDBE360027C2BD70008252A0 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */; };
 		BDBE360227C2CA0F008252A0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE360127C2CA0F008252A0 /* Image.swift */; };
+		BDBE360427C2EB8E008252A0 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE360327C2EB8E008252A0 /* Extension + UIViewController.swift */; };
+		BDBE360627C2EBCA008252A0 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE360527C2EBCA008252A0 /* Alertable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITableView.swift"; sourceTree = "<group>"; };
 		BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
 		BDBE360127C2CA0F008252A0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		BDBE360327C2EB8E008252A0 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
+		BDBE360527C2EBCA008252A0 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +248,7 @@
 			children = (
 				BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */,
 				BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */,
+				BDBE360327C2EB8E008252A0 /* Extension + UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				BDBE35C227C13A2F008252A0 /* Configures.swift */,
 				BDBE35C427C13B2C008252A0 /* Colors.swift */,
 				BDBE35C627C13DB8008252A0 /* Identifiers.swift */,
+				BDBE360527C2EBCA008252A0 /* Alertable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -416,6 +422,7 @@
 				BDBE358427C10F56008252A0 /* TabBarPresenter.swift in Sources */,
 				BDBE356D27C103D4008252A0 /* ViewController.swift in Sources */,
 				BDBE359327C11053008252A0 /* LibraryModels.swift in Sources */,
+				BDBE360427C2EB8E008252A0 /* Extension + UIViewController.swift in Sources */,
 				BDBE35CF27C140F4008252A0 /* APIManager.swift in Sources */,
 				BDBE35CB27C140B4008252A0 /* Router.swift in Sources */,
 				BDBE356927C103D4008252A0 /* AppDelegate.swift in Sources */,
@@ -438,6 +445,7 @@
 				BDBE35A227C110C6008252A0 /* FavoriteProtocol.swift in Sources */,
 				BDBE35FC27C179AB008252A0 /* FavoriteSongs.swift in Sources */,
 				BDBE359527C11053008252A0 /* LibraryProtocol.swift in Sources */,
+				BDBE360627C2EBCA008252A0 /* Alertable.swift in Sources */,
 				BDBE359127C11053008252A0 /* LibraryPresenter.swift in Sources */,
 				BDBE358627C10F56008252A0 /* TabBarModels.swift in Sources */,
 				BDBE35C727C13DB8008252A0 /* Identifiers.swift in Sources */,
