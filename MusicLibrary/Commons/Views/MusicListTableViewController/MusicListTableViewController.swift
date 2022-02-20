@@ -8,6 +8,7 @@
 import UIKit
 
 class MusicListTableViewController<T, Cell: UITableViewCell>: UITableViewController {
+    var delegare: LibraryDelegate?
     
     var items: [T] {
         didSet {
@@ -27,6 +28,9 @@ class MusicListTableViewController<T, Cell: UITableViewCell>: UITableViewControl
         self.selectHandler = selectHandler
         super.init(style: .plain)
         self.tableView.register(SongTableViewCell.self, forCellReuseIdentifier: Identifiers.SongTableViewCell)
+        self.tableView.contentInset.top = 20
+        self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = .clear
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +51,13 @@ class MusicListTableViewController<T, Cell: UITableViewCell>: UITableViewControl
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 70
+    }
+}
+
+extension MusicListTableViewController: LibraryDelegate {
+    func dataUpdated() {
+        self.tableView.reloadData()
     }
     
 }

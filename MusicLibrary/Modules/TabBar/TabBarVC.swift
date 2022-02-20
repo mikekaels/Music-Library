@@ -12,9 +12,10 @@ class TabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        view.backgroundColor = .systemBackground
-        tabBar.layer.backgroundColor = UIColor.systemBackground.cgColor
+        view.backgroundColor = Colors.background
+        tabBar.layer.backgroundColor = Colors.background.cgColor
         setupVCs()
+        tabBar()
     }
     
     func setupVCs() {
@@ -22,6 +23,20 @@ class TabBarVC: UITabBarController {
             createNavController(for: LibraryRouter().createModule(), title: NSLocalizedString("Library", comment: ""), image: UIImage(systemName: "folder.circle.fill")!),
             createNavController(for: FavoriteRouter().createModule(), title: NSLocalizedString("Favorite", comment: ""), image: UIImage(systemName: "bookmark.circle")!)
         ]
+    }
+    
+    func tabBar() {
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            tabBarAppearance.backgroundColor = Colors.background
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+            
+
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+        }
     }
     
     
@@ -35,8 +50,7 @@ class TabBarVC: UITabBarController {
 //        rootViewController.navigationItem.title = title
         
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = .systemBackground
+        appearance.backgroundColor = Colors.background
         
         navController.navigationBar.setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.defaultPrompt)
         navController.navigationBar.shadowImage = UIImage()
@@ -52,7 +66,6 @@ class TabBarVC: UITabBarController {
 
 extension TabBarVC: UITabBarControllerDelegate{
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("Should select viewController: \(viewController.title ?? "") ?")
         return true;
     }
 }

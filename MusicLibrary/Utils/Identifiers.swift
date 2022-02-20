@@ -9,4 +9,5 @@ import Foundation
 
 enum Identifiers{
     static let SongTableViewCell = "SongTableViewCell"
+    static let FavoriteCoreData = "FavoriteEntity"
 }

@@ -27,7 +27,7 @@ struct Body: Codable {
 
 // MARK: - TrackList
 struct TrackList: Codable {
-    let track: Track?
+    var track: Track?
 }
 
 // MARK: - Track
@@ -37,7 +37,7 @@ struct Track: Codable {
     let trackNameTranslationList: [TrackNameTranslationList]?
     let trackRating, commontrackID, instrumental, explicit: Int?
     let hasLyrics, hasSubtitles, hasRichsync, numFavourite: Int?
-    let albumID: Int?
+    var albumID: Int = 0
     let albumName: String?
     let artistID: Int?
     let artistName: String?

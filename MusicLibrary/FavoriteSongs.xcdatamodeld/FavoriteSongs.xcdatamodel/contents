@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoriteSongs" representedClassName="FavoriteSongs" syncable="YES">
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="saved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="singer" optional="YES" attributeType="String"/>
+        <attribute name="songTitle" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="FavoriteSongs" positionX="-45" positionY="0" width="128" height="104"/>
+    </elements>
+</model>

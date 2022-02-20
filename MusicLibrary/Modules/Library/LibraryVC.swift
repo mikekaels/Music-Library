@@ -7,12 +7,19 @@
 import UIKit
 import SnapKit
 
-class LibraryVC: UIViewController {
+class LibraryVC: UIViewController{
     var presentor: LibraryViewToPresenterProtocol?
     public var delegate: LibraryDelegate?
     var page = 1
     var pageSize = 10
+    var songs : [SongsModel] = [SongsModel]()
+    var searchText = ""
     
+    let refreshControl = UIRefreshControl()
+        .configure { v in
+            v.attributedTitle = NSAttributedString(string: "Pull to refresh")
+            v.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        }
     private lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchResultsUpdater = self
@@ -24,9 +31,13 @@ class LibraryVC: UIViewController {
         return sc
     }()
     
-    lazy var table = MusicListTableViewController(items: [], configure: { (cell: SongTableViewCell, item: TrackList) in
-        cell.lblSongTitle.text = item.track?.trackName
-        cell.lblSinger.text = item.track?.artistName
+    lazy var table = MusicListTableViewController(items: [], configure: { (cell: SongTableViewCell, item: SongsModel) in
+        cell.lblSongTitle.text = item.songTitle
+        cell.lblSinger.text = item.singer
+        cell.id = item.id
+        cell.state = item.saved == 1 ? .saved : .add
+        cell.data = item
+        cell.delegate = self
     }) { (item) in
         print(item!)
     }
@@ -36,28 +47,73 @@ class LibraryVC: UIViewController {
         title = "Library"
         setupUI()
         presentor?.fetchChart(page: self.page, pageSize: self.pageSize)
+        receiveNC()
+        table.tableView.addSubview(refreshControl)
     }
-
+    
+    @objc func refresh(_ sender: AnyObject) {
+        page += 1
+        if searchText != "" {
+            presentor?.findSongs(page: self.page, pageSize: self.pageSize, songTitle: searchText)
+        } else {
+            presentor?.fetchChart(page: self.page, pageSize: self.pageSize)
+        }
+        
+    }
+    
+    func receiveNC() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableData), name: NSNotification.Name("update.table.data.library"), object: nil)
+    }
+    
+    func broadcastNC() {
+        NotificationCenter.default.post(name: NSNotification.Name("update.table.data.favorite"),object: nil)
+    }
+    
+    @objc func updateTableData() {
+        presentor?.fetchChart(page: page, pageSize: pageSize)
+    }
 }
 
 extension LibraryVC: LibraryPresenterToViewProtocol {
-    func didSuccesFetchChart(music: [TrackList]) {
+    func didFetchFavorite(songs: [SongsModel]) {
+        self.songs = songs
         DispatchQueue.main.async { [weak self] in
-            self?.table.items.append(contentsOf: music)
+            self?.table.items = self!.songs
+            self?.refreshControl.endRefreshing()
         }
+    }
+
+    func didFailFavorite(error: CustomError) {
+        
     }
     
     func didFailFetchChart(error: CustomError) {
         
     }
+}
+
+//MARK: - CELL DELEGATE
+extension LibraryVC: SongCellDelegate {
+    func addToFavorites(id: NSNumber, songTitle: String, singer: String) {
+        presentor?.addToFavorite(id: id)
+        self.delegate?.dataUpdated()
+        broadcastNC()
+    }
     
-    
+    func removeFromFavorite(id: NSNumber) {
+        presentor?.deleteFromFavorite(id: id)
+        broadcastNC()
+    }
 }
 
 
 
 //MARK: - UISEARCHBAR DELEGATE
 extension LibraryVC: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
     
     //MARK: - SEARCH CONTROL
     private func setupNavigationBar() {
@@ -65,8 +121,24 @@ extension LibraryVC: UISearchResultsUpdating, UISearchControllerDelegate, UISear
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            self.searchText = searchText
+            presentor?.findSongs(page: page, pageSize: pageSize, songTitle: searchText)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if searchText != "" {
+            self.searchText = ""
+            self.page = 1
+            scrollToTop()
+            presentor?.fetchChart(page: 1, pageSize: pageSize)
+        }
+    }
+    
+    func scrollToTop() {
+        table.tableView.scrollToTop(animated: true)
     }
 }
 
@@ -75,7 +147,7 @@ extension LibraryVC {
         setupNavigationBar()
         
         addChild(table)
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = Colors.background
         view.addSubview(table.view)
         table.didMove(toParent: self)
         

@@ -42,6 +42,10 @@
 		BDBE35CF27C140F4008252A0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35CE27C140F4008252A0 /* APIManager.swift */; };
 		BDBE35D127C14132008252A0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35D027C14132008252A0 /* Reachability.swift */; };
 		BDBE35D327C149AA008252A0 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35D227C149AA008252A0 /* MusicModel.swift */; };
+		BDBE35F627C1725A008252A0 /* FavoriteSongs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35F427C1725A008252A0 /* FavoriteSongs.xcdatamodeld */; };
+		BDBE35FC27C179AB008252A0 /* FavoriteSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FB27C179AB008252A0 /* FavoriteSongs.swift */; };
+		BDBE35FE27C2B8AE008252A0 /* Extension + UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */; };
+		BDBE360027C2BD70008252A0 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,10 @@
 		BDBE35CE27C140F4008252A0 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BDBE35D027C14132008252A0 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BDBE35D227C149AA008252A0 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		BDBE35F527C1725A008252A0 /* FavoriteSongs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteSongs.xcdatamodel; sourceTree = "<group>"; };
+		BDBE35FB27C179AB008252A0 /* FavoriteSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongs.swift; sourceTree = "<group>"; };
+		BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UITableView.swift"; sourceTree = "<group>"; };
+		BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +139,7 @@
 				BDBE357127C103D5008252A0 /* Assets.xcassets */,
 				BDBE357327C103D5008252A0 /* LaunchScreen.storyboard */,
 				BDBE357627C103D5008252A0 /* Info.plist */,
+				BDBE35F427C1725A008252A0 /* FavoriteSongs.xcdatamodeld */,
 			);
 			path = MusicLibrary;
 			sourceTree = "<group>";
@@ -205,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				BDBE35D227C149AA008252A0 /* MusicModel.swift */,
+				BDBE35FB27C179AB008252A0 /* FavoriteSongs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +239,8 @@
 		BDBE35C027C139C4008252A0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BDBE35FD27C2B8AE008252A0 /* Extension + UITableView.swift */,
+				BDBE35FF27C2BD70008252A0 /* Extension + UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDBE358727C10F57008252A0 /* TabBarInteractor.swift in Sources */,
+				BDBE35FE27C2B8AE008252A0 /* Extension + UITableView.swift in Sources */,
 				BDBE35CD27C140E8008252A0 /* Service.swift in Sources */,
 				BDBE358427C10F56008252A0 /* TabBarPresenter.swift in Sources */,
 				BDBE356D27C103D4008252A0 /* ViewController.swift in Sources */,
@@ -417,11 +430,14 @@
 				BDBE359E27C110C6008252A0 /* FavoritePresenter.swift in Sources */,
 				BDBE358527C10F56008252A0 /* TabBarRouter.swift in Sources */,
 				BDBE35C327C13A30008252A0 /* Configures.swift in Sources */,
+				BDBE360027C2BD70008252A0 /* Extension + UIColor.swift in Sources */,
 				BDBE35A227C110C6008252A0 /* FavoriteProtocol.swift in Sources */,
+				BDBE35FC27C179AB008252A0 /* FavoriteSongs.swift in Sources */,
 				BDBE359527C11053008252A0 /* LibraryProtocol.swift in Sources */,
 				BDBE359127C11053008252A0 /* LibraryPresenter.swift in Sources */,
 				BDBE358627C10F56008252A0 /* TabBarModels.swift in Sources */,
 				BDBE35C727C13DB8008252A0 /* Identifiers.swift in Sources */,
+				BDBE35F627C1725A008252A0 /* FavoriteSongs.xcdatamodeld in Sources */,
 				BDBE35BF27C1221B008252A0 /* MusicListTableViewController.swift in Sources */,
 				BDBE35A327C110C6008252A0 /* FavoriteVC.swift in Sources */,
 				BDBE359627C11053008252A0 /* LibraryVC.swift in Sources */,
@@ -644,6 +660,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BDBE35F427C1725A008252A0 /* FavoriteSongs.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BDBE35F527C1725A008252A0 /* FavoriteSongs.xcdatamodel */,
+			);
+			currentVersion = BDBE35F527C1725A008252A0 /* FavoriteSongs.xcdatamodel */;
+			path = FavoriteSongs.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BDBE355D27C103D4008252A0 /* Project object */;
 }

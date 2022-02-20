@@ -10,9 +10,10 @@ import Alamofire
 
 enum APIRouter {
     case getChartSong(page: Int, pageSize: Int)
+    case findSongs(page: Int, pageSize: Int, songTitle: String)
 }
 
-let apiKey: String = "0ad8a85dcc89c7bb9208a2230624cd21"
+let apiKey: String = "4f7549e47cbd524ddda8f7ca760b4277"
 
 extension APIRouter: HttpRouter {
     
@@ -25,7 +26,7 @@ extension APIRouter: HttpRouter {
     
     var method: HTTPMethod {
         switch self {
-        case .getChartSong: return .get
+        case .getChartSong, .findSongs: return .get
         }
     }
     
@@ -38,6 +39,7 @@ extension APIRouter: HttpRouter {
     var path: String {
         switch self {
         case .getChartSong: return "chart.tracks.get"
+        case .findSongs: return "track.search"
         }
     }
     
@@ -54,6 +56,14 @@ extension APIRouter: HttpRouter {
                 "apikey":apiKey,
                 "page":page,
                 "page_size":pageSize
+            ]
+            
+        case .findSongs(let page, let pageSize, let songTitle):
+            return [
+                "apikey":apiKey,
+                "page":page,
+                "page_size":pageSize,
+                "q_track":songTitle
             ]
         }
     }
