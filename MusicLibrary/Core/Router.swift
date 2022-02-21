@@ -10,11 +10,11 @@ import Alamofire
 
 enum APIRouter {
     case getChartSong(page: Int, pageSize: Int)
-    case findSongs(page: Int, pageSize: Int, songTitle: String)
+    case findSongs(page: Int, pageSize: Int, query: String)
     case getRandomImage
 }
 
-let apiKey: String = "4f7549e47cbd524ddda8f7ca760b4277"
+let apiKey: String = "0ad8a85dcc89c7bb9208a2230624cd21"
 let unsplashAccesKey = "Ujuvr2oFjFCKfggCDeVtwyQXQP8Eeiw4kZG-FxiobGE"
 
 extension APIRouter: HttpRouter {
@@ -69,12 +69,12 @@ extension APIRouter: HttpRouter {
                 "page_size":pageSize
             ]
             
-        case .findSongs(let page, let pageSize, let songTitle):
+        case .findSongs(let page, let pageSize, let query):
             return [
                 "apikey":apiKey,
                 "page":page,
                 "page_size":pageSize,
-                "q_track":songTitle
+                "q_artist":query
             ]
         case .getRandomImage:
             return [

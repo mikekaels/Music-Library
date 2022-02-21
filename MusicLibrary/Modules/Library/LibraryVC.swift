@@ -25,7 +25,7 @@ class LibraryVC: UIViewController{
         sc.searchResultsUpdater = self
         sc.delegate = self
         sc.obscuresBackgroundDuringPresentation = false
-        sc.searchBar.placeholder = "Find Song..."
+        sc.searchBar.placeholder = "Find Artist..."
         sc.searchBar.delegate = self
         sc.searchBar.barStyle = .black
         return sc
@@ -55,7 +55,7 @@ class LibraryVC: UIViewController{
     @objc func refresh(_ sender: AnyObject) {
         page += 1
         if searchText != "" {
-            presentor?.findSongs(page: self.page, pageSize: self.pageSize, songTitle: searchText)
+            presentor?.findSongs(page: self.page, pageSize: self.pageSize, query: searchText)
         } else {
             presentor?.fetchChart(page: self.page, pageSize: self.pageSize)
         }
@@ -72,7 +72,7 @@ class LibraryVC: UIViewController{
     
     @objc func updateTableData() {
         if searchText != "" {
-            presentor?.findSongs(page: page, pageSize: pageSize, songTitle: searchText)
+            presentor?.findSongs(page: page, pageSize: pageSize, query: searchText)
         } else {
             presentor?.fetchChart(page: page, pageSize: pageSize)
         }
@@ -93,7 +93,7 @@ extension LibraryVC: LibraryPresenterToViewProtocol {
         if error == .noInternetConnection {
             self.noInternetConnection(true) { [weak self] in
                 if self?.searchText != "" {
-                    self?.presentor?.findSongs(page: self!.page, pageSize: self!.pageSize, songTitle: self!.searchText)
+                    self?.presentor?.findSongs(page: self!.page, pageSize: self!.pageSize, query: self!.searchText)
                 } else {
                     self?.presentor?.fetchChart(page: self!.page, pageSize: self!.pageSize)
                 }
@@ -106,7 +106,7 @@ extension LibraryVC: LibraryPresenterToViewProtocol {
         if error == .noInternetConnection {
             self.noInternetConnection(true) { [weak self] in
                 if self!.searchText != "" {
-                    self?.presentor?.findSongs(page: self!.page, pageSize: self!.pageSize, songTitle: self!.searchText)
+                    self?.presentor?.findSongs(page: self!.page, pageSize: self!.pageSize, query: self!.searchText)
                 } else {
                     self?.presentor?.fetchChart(page: self!.page, pageSize: self!.pageSize)
                 }
@@ -148,7 +148,7 @@ extension LibraryVC: UISearchResultsUpdating, UISearchControllerDelegate, UISear
         self.page = 1
         if let searchText = searchBar.text {
             self.searchText = searchText
-            presentor?.findSongs(page: page, pageSize: pageSize, songTitle: searchText)
+            presentor?.findSongs(page: page, pageSize: pageSize, query: searchText)
         }
     }
     

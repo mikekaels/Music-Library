@@ -17,21 +17,8 @@ class LibraryPresenter: LibraryViewToPresenterProtocol {
         interactor?.fetchChart(page: page, pageSize: pageSize)
     }
     
-    func findSongs(page: Int, pageSize: Int, songTitle: String) {
-        interactor?.findSongs(page: page, pageSize: pageSize, songTitle: songTitle)
-    }
-    
-    func addToFavorite(trackList: [TrackList]) {
-        
-        var newSongs : [SongsModel] = [SongsModel]()
-        
-        trackList.forEach { item in
-            let favoriteSong = SongsModel(id: NSNumber(value: (item.track?.trackID)!), songTitle: (item.track?.trackName)!, singer: (item.track?.artistName)!, dateAdded: Date(), saved: 0, image: "")
-            
-            newSongs.append(favoriteSong)
-        }
-        
-        interactor?.addToFavorite(songs: newSongs)
+    func findSongs(page: Int, pageSize: Int, query: String) {
+        interactor?.findSongs(page: page, pageSize: pageSize, query: query)
     }
     
     func deleteFromFavorite(id: NSNumber) {
@@ -64,5 +51,22 @@ extension LibraryPresenter: LibraryInteractorToPresenterProtocol {
         case .failure(let error):
             view?.didFailFetchChart(error: error)
         }
+    }
+    
+    
+}
+
+extension LibraryPresenter {
+    func addToFavorite(trackList: [TrackList]) {
+        
+        var newSongs : [SongsModel] = [SongsModel]()
+        
+        trackList.forEach { item in
+            let favoriteSong = SongsModel(id: NSNumber(value: (item.track?.trackID)!), songTitle: (item.track?.trackName)!, singer: (item.track?.artistName)!, dateAdded: Date(), saved: 0, image: "")
+            
+            newSongs.append(favoriteSong)
+        }
+        
+        interactor?.addToFavorite(songs: newSongs)
     }
 }

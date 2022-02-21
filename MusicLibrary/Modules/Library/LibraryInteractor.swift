@@ -17,8 +17,8 @@ extension LibraryInteractor {
         }
     }
     
-    func findSongs(page: Int, pageSize: Int, songTitle: String) {
-        APIManager().findSongs(page: page, pageSize: pageSize, songTitle: songTitle) { [weak self] result in
+    func findSongs(page: Int, pageSize: Int, query: String) {
+        APIManager().findSongs(page: page, pageSize: pageSize, query: query) { [weak self] result in
             self?.presenter?.didFetchChart(result: result)
         }
     }
@@ -42,7 +42,7 @@ extension LibraryInteractor {
     }
     
     func fetchRandomImage() {
-        APIManager()
+        
     }
     
 }

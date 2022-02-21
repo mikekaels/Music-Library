@@ -19,15 +19,21 @@ struct Message: Codable {
 // MARK: - Body
 struct Body: Codable {
     let trackList: [TrackList]?
+    let artistList: [ArtistList]?
 
     enum CodingKeys: String, CodingKey {
         case trackList = "track_list"
+        case artistList = "artist_list"
     }
 }
 
 // MARK: - TrackList
 struct TrackList: Codable {
     var track: Track?
+}
+
+struct ArtistList: Codable {
+    let artist: Artist?
 }
 
 // MARK: - Track
@@ -69,6 +75,39 @@ struct Track: Codable {
     }
 }
 
+// MARK: - Artist
+struct Artist: Codable {
+    let artistID: Int?
+    let artistName: String?
+    let artistNameTranslationList: [ArtistNameTranslationList]?
+    let artistComment, artistCountry: String?
+    let artistAliasList: [ArtistAliasList]?
+    let artistRating: Int?
+    let artistTwitterURL: String?
+    let artistCredits: Body?
+    let restricted: Int?
+    let updatedTime: String?
+    let beginDateYear, beginDate, endDateYear, endDate: String?
+
+    enum CodingKeys: String, CodingKey {
+        case artistID = "artist_id"
+        case artistName = "artist_name"
+        case artistNameTranslationList = "artist_name_translation_list"
+        case artistComment = "artist_comment"
+        case artistCountry = "artist_country"
+        case artistAliasList = "artist_alias_list"
+        case artistRating = "artist_rating"
+        case artistTwitterURL = "artist_twitter_url"
+        case artistCredits = "artist_credits"
+        case restricted
+        case updatedTime = "updated_time"
+        case beginDateYear = "begin_date_year"
+        case beginDate = "begin_date"
+        case endDateYear = "end_date_year"
+        case endDate = "end_date"
+    }
+}
+
 // MARK: - PrimaryGenres
 struct PrimaryGenres: Codable {
     let musicGenreList: [MusicGenreList]?
@@ -77,6 +116,43 @@ struct PrimaryGenres: Codable {
         case musicGenreList = "music_genre_list"
     }
 }
+
+// MARK: - ArtistAliasList
+struct ArtistAliasList: Codable {
+    let artistAlias: String?
+
+    enum CodingKeys: String, CodingKey {
+        case artistAlias = "artist_alias"
+    }
+}
+
+// MARK: - ArtistNameTranslationList
+struct ArtistNameTranslationList: Codable {
+    let artistNameTranslation: ArtistNameTranslation?
+
+    enum CodingKeys: String, CodingKey {
+        case artistNameTranslation = "artist_name_translation"
+    }
+}
+
+// MARK: - ArtistNameTranslation
+struct ArtistNameTranslation: Codable {
+    let language, translation: String?
+}
+
+// MARK: - Header
+struct Header: Codable {
+    let statusCode: Int?
+    let executeTime: Double?
+    let available: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case statusCode = "status_code"
+        case executeTime = "execute_time"
+        case available
+    }
+}
+
 
 // MARK: - MusicGenreList
 struct MusicGenreList: Codable {
@@ -115,13 +191,13 @@ struct TrackNameTranslation: Codable {
     let language, translation: String?
 }
 
-// MARK: - Header
-struct Header: Codable {
-    let statusCode: Int?
-    let executeTime: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case statusCode = "status_code"
-        case executeTime = "execute_time"
-    }
-}
+//// MARK: - Header
+//struct Header: Codable {
+//    let statusCode: Int?
+//    let executeTime: Double?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case statusCode = "status_code"
+//        case executeTime = "execute_time"
+//    }
+//}

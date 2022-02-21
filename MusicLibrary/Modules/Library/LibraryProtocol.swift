@@ -19,7 +19,7 @@ protocol LibraryViewToPresenterProtocol: AnyObject {
     func addToFavorite(trackList: [TrackList])
     func deleteFromFavorite(id: NSNumber)
     func addToFavorite(id: NSNumber)
-    func findSongs(page: Int, pageSize: Int, songTitle: String)
+    func findSongs(page: Int, pageSize: Int, query: String)
     func fetchRandomImage()
 }
 
@@ -31,17 +31,19 @@ protocol LibraryPresenterToViewProtocol: AnyObject {
     func didFailFetchChart(error: CustomError)
     func didFetchFavorite(songs: [SongsModel])
     func didFailFavorite(error: CustomError)
+    
 }
 
 protocol LibraryInteractorToPresenterProtocol: AnyObject {
     func didFetchChart(result: Result<MusicModel, CustomError>)
+    
     func didFetchFavorite(result: Result<[SongsModel], CustomError>)
 }
 
 protocol LibraryPresenterToInteractorProtocol: AnyObject {
     var presenter: LibraryInteractorToPresenterProtocol? { get set }
     func fetchChart(page: Int, pageSize: Int)
-    func findSongs(page: Int, pageSize: Int, songTitle: String)
+    func findSongs(page: Int, pageSize: Int, query: String)
     func addToFavorite(songs: [SongsModel])
     func deleteFromFavorite(id: NSNumber)
     func addToFavorite(id: NSNumber)

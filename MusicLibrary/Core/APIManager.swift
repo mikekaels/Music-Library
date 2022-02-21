@@ -43,13 +43,13 @@ class APIManager {
         }
     }
     
-    func findSongs(page: Int, pageSize: Int, songTitle: String, completion: @escaping(Result<MusicModel, CustomError>) -> Void) {
+    func findSongs(page: Int, pageSize: Int, query: String, completion: @escaping(Result<MusicModel, CustomError>) -> Void) {
         if !Connectivity.isConnectedToInternet {
             completion(.failure(.noInternetConnection))
         } else {
             do {
                 try APIRouter
-                    .findSongs(page: page, pageSize: pageSize, songTitle: songTitle)
+                    .findSongs(page: page, pageSize: pageSize, query: query)
                     .request(usingHttpService: httpService)
                     .responseJSON { result in
                         guard [200, 201].contains(result.response?.statusCode), let data = result.data else { return }
